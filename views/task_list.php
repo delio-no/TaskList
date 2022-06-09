@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='css/taskListStyle.css'>
     <title>Document</title>
 
 </head>
@@ -20,49 +20,30 @@
     </div>
     <br>
     <? foreach (getDescriptionTaskList($_SESSION['id_user']) as $key => &$value) { ?>
+        <? $idTask = getIdTask($_SESSION['id_user']) ?>
+        <? $statusTask = getStatusTaskList($_SESSION['id_user']) ?>
         <div>
-            <label class="form__label" for=""><?  echo htmlspecialchars($value) ?></label>
+            <label class="form__label"><?= htmlspecialchars($value) ?></label>
             <br>
-            <button class="form__button" class="form__button" name="btnrm" type="submit">DELETE</button>
+            <button class="form__button" class="form__button" name="btnrm" type="submit" value="<?= $idTask[$key] ?>">
+                DELETE
+            </button>
         </div>
-        <button class="form__button" name="btn" type="submit" value="true">READY</button>
-        <button class="form__button" name="btn" type="submit" value="false">UNREADY</button>
+        <button class="form__button" name="btnrd" type="submit" value="<?= $idTask[$key] ?>">
+            READY
+        </button>
+        <button class="form__button" name="btnunrd" type="submit" value="<?= $idTask[$key] ?>">
+            UNREADY
+        </button>
         <label class="switch">
-            <input type="checkbox" disabled ' . $_SESSION['checked'][$key] . '>
+            <input type="checkbox" disabled <? echo htmlspecialchars($statusTask[$key]) ?> >
             <span class="slider round"></span>
         </label>
         </form>
     <? }
-    /*var_dump(getDescriptionTaskList($_SESSION['id_user']));*/
-    var_dump($_SESSION);
-    //session_destroy();
+    //для отладки
+    //var_dump($_SESSION);
     ?>
-
-
-    <!--    if (!empty($_SESSION['listWork'])) {
-            foreach ($_SESSION['listWork'] as $key => &$value) {
-
-                echo
-                    '<form  action="/delete.php" method="post">' .
-                    '<div>' .
-                    '<input type="text" name="key" value="' . $key . '" hidden/>' .
-                    '<label class="form__label" for="">' . $value . '</label>' .
-                    '<br>' .
-                    '<button class="form__button" class="form__button" name="btnrm" type="submit">DELETE</button> ' .
-                    '</div>' .
-                    '</form>' .
-                    '<form action="/checkbox.php" method="post">' .
-                    '<input type="text" name="key" value="' . $key . '" hidden/>' .
-                    '<button class="form__button" name="btn" type="submit" value="true">READY</button> ' .
-                    '<button class="form__button" name="btn" type="submit" value="false">UNREADY</button> ' .
-                    '<label class="switch">
-                            <input type="checkbox" disabled ' . $_SESSION['checked'][$key] . '>
-                            <span class="slider round"></span>
-                     </label>' .
-                    '</form>';
-            }
-        }
-    -->
 </div>
 
 </body>
