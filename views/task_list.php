@@ -13,7 +13,7 @@
 <div class="container">
     <h1 class="form__title">Task list</h1>
     <div>
-        <form action="../controllers/task_list.php" method="post">
+        <form action="../handlers/task_list.php" method="post">
             <input class="form__input" name="work" type="text" placeholder="Enter text...">
             <button class="form__button" name="btnadd" type="submit">ADD</button>
             <button class="form__button" name="btnrmall" type="submit">REMOVE ALL</button>

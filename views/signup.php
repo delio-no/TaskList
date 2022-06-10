@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form class="form" action="../controllers/signup.php" method="post">
+<form class="form" action="../handlers/signup.php" method="post">
 
     <h1 class="form__title">Signup</h1>
 
@@ -24,8 +24,8 @@
 
     <div class="form__group">
         <button class="form__button" name="submit" type="submit">Signup</button>
-        <? echo htmlspecialchars($_SESSION['message'][0]) ?>
-        <? unset($_SESSION['message']) ?>
+        <?echo htmlspecialchars($_SESSION['message'][0]) ?>
+        <?unset($_SESSION['message']) ?>
     </div>
 </form>
 
